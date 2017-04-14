@@ -55,8 +55,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(intent.getAction().equals(intentFilter.getAction(0)))
-            {
+            if (intent.getAction().equals(intentFilter.getAction(0))) {
                 String symbol = intent.getStringExtra(QuoteSyncJob.STOCK_NAME);
                 PrefUtils.removeStock(context, symbol);
                 swipeRefreshLayout.setRefreshing(false);
@@ -84,8 +83,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onClick(String symbol) {
         Timber.d("Symbol clicked: %s", symbol);
-        Intent intent = new Intent(this,DetailActivity.class);
-        intent.putExtra(QuoteSyncJob.STOCK_NAME,symbol);
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(QuoteSyncJob.STOCK_NAME, symbol);
         startActivity(intent);
     }
 
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        //this.deleteDatabase("StockHawk.db");
         adapter = new StockAdapter(this, this);
         stockRecyclerView.setAdapter(adapter);
         stockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -118,35 +117,28 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 String symbol = adapter.getSymbolAtPosition(viewHolder.getAdapterPosition());
                 PrefUtils.removeStock(MainActivity.this, symbol);
                 getContentResolver().delete(Contract.Quote.makeUriForStock(symbol), null, null);
+                Utils.updateWidgets(MainActivity.this);
             }
         }).attachToRecyclerView(stockRecyclerView);
 
 
     }
 
-    private boolean networkUp() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-        return networkInfo != null && networkInfo.isConnectedOrConnecting();
-    }
-
-
     @Override
     public void onRefresh() {
 
         QuoteSyncJob.syncImmediately(this);
 
-        if (!networkUp() && adapter.getItemCount() == 0) {
+        if (!Utils.networkUp(this) && adapter.getItemCount() == 0) {
             swipeRefreshLayout.setRefreshing(false);
             Utils.setStockStatus(Utils.STOCK_STATUS_NO_NETWORK, this);
-        } else if (!networkUp()) {
+        } else if (!Utils.networkUp(this)) {
             swipeRefreshLayout.setRefreshing(false);
             Toast.makeText(this, R.string.toast_no_connectivity, Toast.LENGTH_LONG).show();
         } else if (PrefUtils.getStocks(this).size() == 0) {
             swipeRefreshLayout.setRefreshing(false);
-            Utils.setStockStatus(Utils.STOCK_STATUS_UNKNOWN,this);
-        }else {
+            Utils.setStockStatus(Utils.STOCK_STATUS_UNKNOWN, this);
+        } else {
             error.setVisibility(View.GONE);
         }
     }
@@ -158,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     void addStock(String symbol) {
         if (symbol != null && !symbol.isEmpty()) {
 
-            if (networkUp()) {
+            if (Utils.networkUp(this)) {
                 swipeRefreshLayout.setRefreshing(true);
             } else {
                 String message = getString(R.string.toast_stock_added_no_connectivity, symbol);
@@ -181,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         adapter.setCursor(data);
-        if(data.getCount()!=0) {
+        if (data.getCount() != 0) {
             error.setVisibility(View.GONE);
         }
         swipeRefreshLayout.setRefreshing(false);
@@ -226,9 +218,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         return super.onOptionsItemSelected(item);
     }
 
-    public void updateEmptyView(){
-        if(adapter.getItemCount() ==0)
-        {
+    public void updateEmptyView() {
+        if (adapter.getItemCount() == 0) {
             int message;
             @Utils.StockStatus int status = Utils.getStockStatus(this);
             switch (status) {
@@ -246,9 +237,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
             error.setText(message);
             error.setVisibility(View.VISIBLE);
-        }
-        else
-        {
+        } else {
             error.setVisibility(View.GONE);
         }
     }

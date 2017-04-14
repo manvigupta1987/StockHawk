@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Stock Hawk</string>
 
     <string name="pref_stocks_initialized_key" translatable="false">initialized</string>
@@ -36,5 +36,18 @@
     <string name="stock_not_added">Stock %s not added as no vaild data available</string>
 
     <string name="pref_stock_status_key" translatable="false">stock-status</string>
+    <string name="no_history_data">No History Data available for the stock %s</string>
 
+    <string name="closing_value">Stock Closing Data</string>
+    <string name="stock_date">Stock Value Over Period</string>
+    <string name="empty_stock_list">No stock Data Available</string>
+
+    <string name="title_widget_detail">Stock Details</string>
+    <string name="stock_price">Stock Price</string>
+
+    <!-- A11y -->
+    <string name="a11y_stock_symbol">Stock: <xliff:g id="symbol">%1$s</xliff:g></string>
+    <string name="a11y_stock_price">Price: <xliff:g id="stock_price">%1$s</xliff:g></string>
+    <string name="a11y_Stock_ABS_Price_Change">Absolute Price Change: <xliff:g id="change">%1$s</xliff:g></string>
+    <string name="a11y_Stock_per_Price_Change">Price Change in Percentage: <xliff:g id="change">%1$s</xliff:g></string>
 </resources>

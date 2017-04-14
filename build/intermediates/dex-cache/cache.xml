@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/9bcbe6fa2a6f5d6dd583a32d47d84eb6822ec087/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2dc03b0b5fc46a9c0032a70d9d68b15d37cf1c32/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/20.0/89507701249388e1ed5ddcf8c41f4ce1be7831ef/guava-20.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="89507701249388e1ed5ddcf8c41f4ce1be7831ef">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/guava-20.0_640a72668094dc9fc6555c16d132db3d9da77443/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.gradle/caches/modules-2/files-2.1/com.yahoofinance-api/YahooFinanceAPI/3.6.0/abded437ffb52289b17e8898ac27e4959fe3f5ba/YahooFinanceAPI-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="abded437ffb52289b17e8898ac27e4959fe3f5ba">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/YahooFinanceAPI-3.6.0_f86330d8757ad531a1d68de74ce9f0ed2540d2b1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/537681cb3d88ed02191bfd7044afe15962bb37d9/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d38084015027549951cbaea5d5f6fb795cc81151">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c858fdf112391722899af4d5cc981ec359251dc6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/afef1f1bfde5af264eaa07719de2f8d96e37fadc/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="19f281a785ca0eb5f6799fc7bf7ca199a9ca1e8b">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_861e84b182c47c5494444d35e545a59eae1665f1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/def56b3a52533eed67559732efe7e003ca09819d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cdda6b3da948184be06d2e6d66de8ef637c08c44/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/e352c8ffda1cd46c331ab79621fe9a61295eb66e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b266c8faa5af72e579b9da36ef35053ffed6ac64">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_352d5188fba34c81181c93482adee9ffb4a90177/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/c1dd83b4df4fefb052099517aabbd7b17a3f0ed3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cafc5ba9e77fae9f779d80c935c00dc8511b931c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/c4f9aef3b8fb5f0c0ed7e80dbbc76b5602cd788b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="76182d2ede06926e942e5a947a130b915b83a489">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8b544361fcd5839418c8d8e5ab7bd6d0e44e7f88/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/eb9f9cf17f9ea545a1cafcbd6f3ab4bb944f20ff/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ef24976a4248d12b799700065c6b3f2b8f34fb44/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_a9ddbb9686e6d3ac62b81c311c6552729283916b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.gradle/caches/modules-2/files-2.1/net.sf.opencsv/opencsv/2.3/c23708cdb9e80a144db433e23344a788a1fd6599/opencsv-2.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c23708cdb9e80a144db433e23344a788a1fd6599">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/opencsv-2.3_1657f92d0131ac578064885d9d9240afc7a90ffb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/d579068ee5031204657cb3fcc14bc33853fdf5bc/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ac27ab7751b38dc3d15a74525da3631697384b4c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/6f10484771a0dc241166c5bd2808cff6a24891ef/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b6f393f39aacfbb1670b6deb0f048ff6ed809e15/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/Android/Sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_861a67b22720e7c0e15b6a21a92d4602fc02f75f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/ccdb31198cfb96329926a27cf9235c2ae7da63f7/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4f59d4e53d45f2ebbef8659f4e3b5f887fe13f3f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.gradle/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.0.2/5d4eb08a326bdbd7fbbddc769666898c9936b282/MPAndroidChart-v3.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5d4eb08a326bdbd7fbbddc769666898c9936b282">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/MPAndroidChart-v3.0.2_2b037be5f9663d3c75cf6431bcd258ec12a9f571/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/e7fcdaa8b46cdb0cc8d1ffc6d9e0d2eac0c47692/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5672deca1458299254ffa547dee1ae21b35f37f4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/5617a511d41703b23590545c09c1b5bfe557759b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e5dec5c53120196f545378fd2b10c9e8fa5dded5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.5.1/bb67dad90bab7cd77a8f7f1b8442b47e3a2326bc/butterknife-annotations-8.5.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bb67dad90bab7cd77a8f7f1b8442b47e3a2326bc">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.5.1_c98b02d36108643424aa8067fbe45a1bc3952dad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/0612e5246fa53b1ddad019b2ee276ff6af143ee5/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="30103d98fa5ed824b54af839c85e2111f9bde8ec">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7bdc54f020dcbcd7a04226810d9fd029bffcb75e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.android/build-cache/c8a3a6dfe41ffccd6b5b242615aea3c9a29d61e6/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/home/manvi/AndroidStudioProjects/NanoDegreeProgram/Projects/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6cc3a413afd78ad4fcecd2b725b7dae12768ffcd/classes.dex" />
+    </item>
+
+</items>
