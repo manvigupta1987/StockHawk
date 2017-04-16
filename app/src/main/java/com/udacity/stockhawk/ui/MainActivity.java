@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,6 +30,8 @@ import com.udacity.stockhawk.data.PrefUtils;
 import com.udacity.stockhawk.sync.QuoteSyncJob;
 import com.udacity.stockhawk.utils.Constants;
 import com.udacity.stockhawk.utils.Utils;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -98,6 +101,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        setTitle(getString(R.string.app_name));
         //this.deleteDatabase("StockHawk.db");
         adapter = new StockAdapter(this, this);
         stockRecyclerView.setAdapter(adapter);
@@ -124,8 +129,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Utils.updateWidgets(MainActivity.this);
             }
         }).attachToRecyclerView(stockRecyclerView);
-
-
     }
 
     @Override

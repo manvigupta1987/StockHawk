@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">الأسهم هوك</string>
+    <string name="closing_value">بيانات إغلاق الأسهم</string>
+    <string name="stock_date">قيمة الأسهم خلال الفترة</string>
+    <string name="stock_price">اليوم سعر السهم</string>
+    <string name="no_history_data">لا توجد بيانات التاريخ المتاحة للسهم %s</string>
+
+    <string name="dialog_title">إضافة سهم</string>
+    <string name="dialog_hint">الرمز (مثل غوغ)</string>
+    <string name="dialog_cancel">إلغاء</string>
+    <string name="dialog_add">إضافة</string>
+
+    <string name="error_no_stock">لا بيانات المخزون متوفرة.</string>
+    <string name="error_no_network">لا اتصال الشبكة! يرجى التحقق من إعدادات الشبكة.</string>
+    <string name="error_no_stocks">لم يتم إضافة أي أسهم! ضرب زر العمل العائمة لإضافة واحد.</string>
+    <string name="error_server_down">لا تتوفر بيانات الأسهم. الخادم لا يعرض بيانات صالحة</string>
+    <string name="toast_stock_added_no_connectivity">تمت إضافة الرمز٪ s. سيتم تحديث عندما الشبكة المتاحة.</string>
+    <string name="toast_no_connectivity">سيتم تحديث عندما الشبكة المتاحة.</string>
+
+    <string name="stock_not_added">لا يتم إضافة النسبة المئوية٪ s لعدم وجود بيانات صالحة</string>
+    <string name="title_widget_detail">تفاصيل المخزون</string>
+</resources>

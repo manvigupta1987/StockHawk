@@ -69,6 +69,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         if(intent.hasExtra(Constants.STOCK_NAME))
         {
             symbol = intent.getStringExtra(Constants.STOCK_NAME);
+            setTitle(symbol);
             Bundle bundle = new Bundle();
             bundle.putString(Constants.STOCK_NAME,symbol);
             setupLineChart(symbol);

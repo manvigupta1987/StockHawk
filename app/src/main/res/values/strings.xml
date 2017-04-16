@@ -17,9 +17,7 @@
     <string name="default_stocks_microsoft">MSFT</string>
     <string name="default_stocks_facebook">FB</string>
 
-
     <string name="action_change_units">@string/pref_display_mode_key</string>
-
 
     <string name="dialog_title">Add Stock</string>
     <string name="dialog_hint">Symbol (e.g. GOOG)</string>
