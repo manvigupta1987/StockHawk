@@ -1,5 +1,6 @@
 package com.udacity.stockhawk.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,7 +10,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.IntDef;
 
 import com.udacity.stockhawk.R;
-import com.udacity.stockhawk.sync.QuoteSyncJob;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -20,17 +20,18 @@ import java.lang.annotation.RetentionPolicy;
 
 public class Utils {
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef( {STOCK_STATUS_OK, STOCK_STATUS_SERVER_DOWN, STOCK_STATUS_SERVER_INVALID, STOCK_STATUS_NO_NETWORK,STOCK_STATUS_UNKNOWN})
+    @IntDef( {STOCK_STATUS_OK, STOCK_STATUS_SERVER_DOWN, STOCK_STATUS_NO_NETWORK,STOCK_STATUS_UNKNOWN})
 
     public @interface StockStatus {}
 
+    @SuppressWarnings("WeakerAccess")
     public static final int STOCK_STATUS_OK =0;
     public static final int STOCK_STATUS_SERVER_DOWN = 1;
-    public static final int STOCK_STATUS_SERVER_INVALID = 2;
-    public static final int STOCK_STATUS_NO_NETWORK = 3;
-    public static final int STOCK_STATUS_UNKNOWN =4;
+    public static final int STOCK_STATUS_NO_NETWORK = 2;
+    public static final int STOCK_STATUS_UNKNOWN =3;
 
 
+    @SuppressLint("ApplySharedPref")
     public static void setStockStatus(@StockStatus int status, Context context)
     {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -55,7 +56,7 @@ public class Utils {
     }
 
     public static void updateWidgets(Context context){
-        Intent dataUpdatedIntent = new Intent(QuoteSyncJob.ACTION_DATA_UPDATED);
+        Intent dataUpdatedIntent = new Intent(Constants.ACTION_DATA_UPDATED);
         context.sendBroadcast(dataUpdatedIntent);
     }
 }

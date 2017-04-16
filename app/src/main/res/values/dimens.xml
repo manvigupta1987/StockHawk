@@ -7,4 +7,6 @@
     <dimen name="widget_detail_resize_width">220dp</dimen>
     <dimen name="widget_detail_resize_height">@dimen/widget_detail_default_height</dimen>
     <dimen name="widget_margin">8dp</dimen>
+    <dimen name="add_dimen">4dp</dimen>
+    <dimen name="progress_bar_dimen">42dp</dimen>
 </resources>

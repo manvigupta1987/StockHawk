@@ -5,8 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
@@ -28,6 +27,7 @@ import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
 import com.udacity.stockhawk.sync.QuoteSyncJob;
+import com.udacity.stockhawk.utils.Constants;
 import com.udacity.stockhawk.utils.Utils;
 
 import butterknife.BindView;
@@ -50,18 +50,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     TextView error;
     private StockAdapter adapter;
 
-    private IntentFilter intentFilter = new IntentFilter(QuoteSyncJob.ACTION_DATA_UNAVAILABLE);
+    private final IntentFilter intentFilter = new IntentFilter(Constants.ACTION_DATA_UNAVAILABLE);
 
-    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(intentFilter.getAction(0))) {
-                String symbol = intent.getStringExtra(QuoteSyncJob.STOCK_NAME);
+                String symbol = intent.getStringExtra(Constants.STOCK_NAME);
                 PrefUtils.removeStock(context, symbol);
                 swipeRefreshLayout.setRefreshing(false);
                 Snackbar snackbar = Snackbar.make(swipeRefreshLayout, getString(R.string.stock_not_added, symbol), Snackbar.LENGTH_SHORT);
                 View sbView = snackbar.getView();
-                sbView.setBackgroundColor(context.getResources().getColor(R.color.material_blue_500));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    sbView.setBackgroundColor(context.getColor(R.color.material_blue_500));
+                }else {
+                    sbView.setBackgroundColor(context.getResources().getColor(R.color.material_blue_500));
+                }
                 snackbar.show();
             }
         }
@@ -84,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onClick(String symbol) {
         Timber.d("Symbol clicked: %s", symbol);
         Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra(QuoteSyncJob.STOCK_NAME, symbol);
+        intent.putExtra(Constants.STOCK_NAME, symbol);
         startActivity(intent);
     }
 
@@ -218,7 +222,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         return super.onOptionsItemSelected(item);
     }
 
-    public void updateEmptyView() {
+    private void updateEmptyView() {
         if (adapter.getItemCount() == 0) {
             int message;
             @Utils.StockStatus int status = Utils.getStockStatus(this);

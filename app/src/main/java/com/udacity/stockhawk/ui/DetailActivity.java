@@ -1,58 +1,45 @@
 package com.udacity.stockhawk.ui;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.media.audiofx.AudioEffect;
-import android.net.Uri;
-import android.support.design.widget.Snackbar;
+import android.os.Build;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.Chart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.IValueFormatter;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.EntryXComparator;
-import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.udacity.stockhawk.R;
-import com.udacity.stockhawk.StockHistoryData;
-import com.udacity.stockhawk.data.Contract;
-import com.udacity.stockhawk.sync.QuoteSyncJob;
+import com.udacity.stockhawk.utils.Constants;
 import com.udacity.stockhawk.utils.MyMarkerView;
 import com.udacity.stockhawk.utils.Utils;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.StringReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,12 +49,12 @@ import yahoofinance.histquotes.HistoricalQuote;
 import yahoofinance.histquotes.Interval;
 
 public class DetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<HistoricalQuote>>{
-    private final static String TAG = DetailActivity.class.getSimpleName();
 
     @BindView(R.id.chart) LineChart mLineChart;
     @BindView(R.id.tvXMax) TextView mLabelX;
     @BindView(R.id.tvYMax) TextView mLabelY;
-    private static final int YEARS_OF_HISTORY = 2;
+    @BindView(R.id.pb_loading_bar)
+    ProgressBar mLoadingBar;
     private static final int DETAIL_LOADER_ID = 5000;
     private XAxis xAxis;
 
@@ -79,20 +66,40 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
         String symbol;
         Intent intent = getIntent();
-        if(intent.hasExtra(QuoteSyncJob.STOCK_NAME))
+        if(intent.hasExtra(Constants.STOCK_NAME))
         {
-            symbol = intent.getStringExtra(QuoteSyncJob.STOCK_NAME);
+            symbol = intent.getStringExtra(Constants.STOCK_NAME);
             Bundle bundle = new Bundle();
-            bundle.putString(QuoteSyncJob.STOCK_NAME,symbol);
+            bundle.putString(Constants.STOCK_NAME,symbol);
             setupLineChart(symbol);
             setupXAxis();
             setupYAxis();
             setMarkerViewOnValues();
             if(Utils.networkUp(this))
             {
+                showProgressBar();
                 getSupportLoaderManager().initLoader(DETAIL_LOADER_ID, bundle,DetailActivity.this);
             }
+            else {
+                mLabelY.setVisibility(View.INVISIBLE);
+                mLabelX.setVisibility(View.INVISIBLE);
+                mLoadingBar.setVisibility(View.INVISIBLE);
+            }
         }
+    }
+
+    private void showDataView(){
+        mLineChart.setVisibility(View.VISIBLE);
+        mLabelY.setVisibility(View.VISIBLE);
+        mLabelX.setVisibility(View.VISIBLE);
+        mLoadingBar.setVisibility(View.INVISIBLE);
+    }
+
+    private void showProgressBar(){
+        mLineChart.setVisibility(View.INVISIBLE);
+        mLabelY.setVisibility(View.INVISIBLE);
+        mLabelX.setVisibility(View.INVISIBLE);
+        mLoadingBar.setVisibility(View.VISIBLE);
     }
 
     private void setupXAxis(){
@@ -105,7 +112,11 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         xAxis.setGranularityEnabled(true);
         xAxis.setGranularity(1f);
         xAxis.setEnabled(true);
-        xAxis.setAxisLineColor(getResources().getColor(R.color.material_red_700));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            xAxis.setAxisLineColor(getColor(R.color.material_red_700));
+        } else {
+            xAxis.setAxisLineColor(getResources().getColor(R.color.material_red_700));
+        }
         xAxis.setAxisLineWidth(2f);
     }
 
@@ -122,13 +133,20 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         leftAxis.setEnabled(true);
         leftAxis.setGranularity(1f);
         leftAxis.setDrawLimitLinesBehindData(true); // to draw grid lines behind data.
-        leftAxis.setAxisLineColor(getResources().getColor(R.color.material_red_700));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            leftAxis.setAxisLineColor(getColor(R.color.material_red_700));
+        }else {
+            leftAxis.setAxisLineColor(getResources().getColor(R.color.material_red_700));
+        }
         leftAxis.setAxisLineWidth(2f);
     }
 
     private void setupLineChart(String symbol){
         mLineChart.setDrawGridBackground(false);
         mLineChart.setNoDataText(getString(R.string.no_history_data,symbol));
+        Paint p = mLineChart.getPaint(Chart.PAINT_INFO);
+        p.setTextSize(40f);
+
         mLineChart.setBackgroundColor(Color.TRANSPARENT);
         mLineChart.setDescription(null);
         mLineChart.animateX(1500);
@@ -159,11 +177,11 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
             @Override
             public List<HistoricalQuote> loadInBackground() {
-                String symbol = args.getString(QuoteSyncJob.STOCK_NAME);
+                String symbol = args.getString(Constants.STOCK_NAME);
                 try {
                     Calendar from = Calendar.getInstance();
                     Calendar to = Calendar.getInstance();
-                    from.add(Calendar.YEAR, -YEARS_OF_HISTORY);
+                    from.add(Calendar.YEAR, -Constants.YEARS_OF_HISTORY);
                     Stock stock = YahooFinance.get(symbol);
                     if (stock.isValid()) {
                         mHistoryData = stock.getHistory(from, to, Interval.WEEKLY);
@@ -190,8 +208,9 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoadFinished(Loader<List<HistoricalQuote>> loader, List<HistoricalQuote> data) {
 
         if(data!=null) {
-            List<Entry> Enteries = new ArrayList<Entry>();
-            ArrayList<String> DateInMilis = new ArrayList<String>();
+            showDataView();
+            List<Entry> Enteries = new ArrayList<>();
+            ArrayList<String> DateInMilis = new ArrayList<>();
 
             int index = 0;
             for (HistoricalQuote history : data) {
@@ -209,6 +228,10 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
             Collections.sort(Enteries, new EntryXComparator());
             setEntryValuesInLineDataset(Enteries);
             setXAxisDataValues(DateInMilis);
+        }
+        else {
+            mLoadingBar.setVisibility(View.INVISIBLE);
+            mLineChart.setVisibility(View.VISIBLE);
         }
     }
 
@@ -257,8 +280,8 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
     }
 
-    public String changeDateFormat(float date){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-yy");
+    private String changeDateFormat(float date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-yy", Locale.getDefault());
         return(dateFormat.format(new Date((long)date)));
     }
 }

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 @SuppressLint("AppCompatCustomView")
 public class VerticalTextView extends TextView {
-    final boolean topDown;
+    private final boolean topDown;
 
     public VerticalTextView(Context context, AttributeSet attrs){
         super(context, attrs);
@@ -26,6 +26,7 @@ public class VerticalTextView extends TextView {
             topDown = true;
     }
 
+    @SuppressWarnings("SuspiciousNameCombination")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
         super.onMeasure(heightMeasureSpec, widthMeasureSpec);

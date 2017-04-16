@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/widget_list_item"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
-    android:paddingRight="@dimen/abc_list_item_padding_horizontal_material">
+    android:paddingStart="@dimen/abc_list_item_padding_horizontal_material"
+    android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
+    android:paddingEnd="@dimen/abc_list_item_padding_horizontal_material"
+    tools:ignore="PrivateResource">
 
     <TextView
         android:id="@+id/widget_stock_symbol"
         style="@style/StockSymbolTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/abc_list_item_padding_horizontal_material"
         android:layout_marginRight="@dimen/abc_list_item_padding_horizontal_material"
+        android:layout_marginEnd="@dimen/abc_list_item_padding_horizontal_material"
         android:gravity="start|center_vertical"
         android:textColor="@android:color/white"
-        tools:text="GOOG" />
+        tools:text="GOOG"
+        tools:ignore="PrivateResource" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -33,6 +35,7 @@
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
             android:layout_marginEnd="10sp"
             android:textColor="@android:color/white"
             tools:text="1000.00" />
@@ -44,10 +47,10 @@
             android:layout_height="wrap_content"
             android:background="@drawable/percent_change_pill_green"
             android:paddingLeft="3dp"
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
             android:paddingRight="3dp"
             android:textColor="@android:color/white"
             tools:text="100%" />
     </LinearLayout>
 </LinearLayout>
-
-

@@ -1,5 +1,6 @@
 package com.udacity.stockhawk.widget;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
@@ -12,9 +13,9 @@ import android.os.Build;
 import android.widget.RemoteViews;
 
 import com.udacity.stockhawk.R;
-import com.udacity.stockhawk.sync.QuoteSyncJob;
 import com.udacity.stockhawk.ui.DetailActivity;
 import com.udacity.stockhawk.ui.MainActivity;
+import com.udacity.stockhawk.utils.Constants;
 
 /**
  * Created by manvi on 13/4/17.
@@ -22,6 +23,7 @@ import com.udacity.stockhawk.ui.MainActivity;
 
 public class DetailWidgetProvider extends AppWidgetProvider {
 
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for(int appWidgetId: appWidgetIds)
@@ -56,7 +58,7 @@ public class DetailWidgetProvider extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        if(QuoteSyncJob.ACTION_DATA_UPDATED.equals(intent.getAction())){
+        if(Constants.ACTION_DATA_UPDATED.equals(intent.getAction())){
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 
             int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(context,getClass()));

@@ -8,12 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
+import com.udacity.stockhawk.utils.Constants;
 import com.udacity.stockhawk.utils.Utils;
 
 import java.io.IOException;
@@ -35,54 +35,22 @@ import yahoofinance.quotes.stock.StockQuote;
 public final class QuoteSyncJob {
 
     private final static String TAG = QuoteSyncJob.class.getSimpleName();
-
-    private static final int ONE_OFF_ID = 2;
-    public static final String ACTION_DATA_UPDATED = "com.udacity.stockhawk.ACTION_DATA_UPDATED";
     private static final int PERIOD = 300000;
+
     private static final int INITIAL_BACKOFF = 10000;
     private static final int PERIODIC_ID = 1;
-    private static final int YEARS_OF_HISTORY = 2;
-
-    public static final String ACTION_DATA_UNAVAILABLE = "com.udacity.stockhawk.ACTION_DATA_UNAVAILABLE";
-    public static final String STOCK_NAME = "stock-name";
+    private static final int ONE_OFF_ID = 2;
 
     private QuoteSyncJob() {
     }
 
-    public static void getHistoryData(String symbol, Context context)
-    {
-        Calendar from = Calendar.getInstance();
-        Calendar to = Calendar.getInstance();
-        from.add(Calendar.YEAR, -YEARS_OF_HISTORY);
-
-        try{
-            Stock stock = YahooFinance.get(symbol);
-            if(stock.isValid())
-            {
-                List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
-                StringBuilder historyBuilder = new StringBuilder();
-
-                for (HistoricalQuote it : history) {
-                    historyBuilder.append(it.getDate().getTimeInMillis());
-                    historyBuilder.append(", ");
-                    historyBuilder.append(it.getClose());
-                    historyBuilder.append("\n");
-                }
-            }
-
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
     static void getQuotes(Context context) {
 
         Timber.d("Running sync job");
 
         Calendar from = Calendar.getInstance();
         Calendar to = Calendar.getInstance();
-        from.add(Calendar.YEAR, -YEARS_OF_HISTORY);
+        from.add(Calendar.YEAR, -Constants.YEARS_OF_HISTORY);
 
         try {
 
@@ -147,8 +115,8 @@ public final class QuoteSyncJob {
                     quoteCVs.add(quoteCV);
                 }
                 else {
-                    Intent intent = new Intent(ACTION_DATA_UNAVAILABLE).setPackage(context.getPackageName());
-                    intent.putExtra(STOCK_NAME, symbol);
+                    Intent intent = new Intent(Constants.ACTION_DATA_UNAVAILABLE).setPackage(context.getPackageName());
+                    intent.putExtra(Constants.STOCK_NAME, symbol);
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                 }
             }
@@ -211,10 +179,6 @@ public final class QuoteSyncJob {
             JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
 
             scheduler.schedule(builder.build());
-
-
         }
     }
-
-
 }

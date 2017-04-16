@@ -1,6 +1,7 @@
 package com.udacity.stockhawk.utils;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.widget.TextView;
 
@@ -18,9 +19,11 @@ import com.udacity.stockhawk.R;
  *
  * @author Philipp Jahoda
  */
+@SuppressLint("ViewConstructor")
 public class MyMarkerView extends MarkerView {
 
-    private TextView tvContent;
+    private final TextView tvContent;
+
 
     public MyMarkerView(Context context, int layoutResource) {
         super(context, layoutResource);

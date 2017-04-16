@@ -1,5 +1,6 @@
 package com.udacity.stockhawk.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,7 +13,7 @@ import android.widget.RemoteViewsService;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
-import com.udacity.stockhawk.sync.QuoteSyncJob;
+import com.udacity.stockhawk.utils.Constants;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -24,18 +25,17 @@ import java.util.Locale;
 
 public class DetailWidgetRemoteViewService extends RemoteViewsService {
 
-    private final static String TAG = DetailWidgetRemoteViewService.class.getSimpleName();
     private final String[] projection = {Contract.Quote.TABLE_NAME + "." + Contract.Quote._ID,
             Contract.Quote.COLUMN_SYMBOL,
             Contract.Quote.COLUMN_PRICE,
             Contract.Quote.COLUMN_ABSOLUTE_CHANGE,
             Contract.Quote.COLUMN_PERCENTAGE_CHANGE};
 
-    static final int INDEX_STOCK_ID = 0;
-    static final int INDEX_STOCK_SYMBOL = 1;
-    static final int INDEX_STOCK_PRICE = 2;
-    static final int INDEX_STOCK_ABS_CHANGE = 3;
-    static final int INDEX_STOCK_PER_CHANGE = 4;
+    private static final int INDEX_STOCK_ID = 0;
+    private static final int INDEX_STOCK_SYMBOL = 1;
+    private static final int INDEX_STOCK_PRICE = 2;
+    private static final int INDEX_STOCK_ABS_CHANGE = 3;
+    private static final int INDEX_STOCK_PER_CHANGE = 4;
 
     private  DecimalFormat dollarFormatWithPlus;
     private  DecimalFormat dollarFormat;
@@ -49,8 +49,8 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService {
             @Override
             public void onCreate() {
                 //Nothing to do here
-                dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
-                dollarFormatWithPlus = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
+                dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.getDefault());
+                dollarFormatWithPlus = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.getDefault());
                 dollarFormatWithPlus.setPositivePrefix("+$");
                 percentageFormat = (DecimalFormat) NumberFormat.getPercentInstance(Locale.getDefault());
                 percentageFormat.setMaximumFractionDigits(2);
@@ -92,6 +92,7 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService {
                 }
             }
 
+            @SuppressLint("ObsoleteSdkInt")
             @Override
             public RemoteViews getViewAt(int position) {
 
@@ -133,7 +134,7 @@ public class DetailWidgetRemoteViewService extends RemoteViewsService {
                 }
 
                 final Intent fillInIntent = new Intent();
-                fillInIntent.putExtra(QuoteSyncJob.STOCK_NAME, symbol);
+                fillInIntent.putExtra(Constants.STOCK_NAME, symbol);
                 remoteViews.setOnClickFillInIntent(R.id.widget_list_item,fillInIntent);
                 return remoteViews;
             }
