@@ -48,10 +48,6 @@ public final class QuoteSyncJob {
 
         Timber.d("Running sync job");
 
-        Calendar from = Calendar.getInstance();
-        Calendar to = Calendar.getInstance();
-        from.add(Calendar.YEAR, -Constants.YEARS_OF_HISTORY);
-
         try {
 
             Set<String> stockPref = PrefUtils.getStocks(context);
@@ -92,26 +88,6 @@ public final class QuoteSyncJob {
                     quoteCV.put(Contract.Quote.COLUMN_PRICE, price);
                     quoteCV.put(Contract.Quote.COLUMN_PERCENTAGE_CHANGE, percentChange);
                     quoteCV.put(Contract.Quote.COLUMN_ABSOLUTE_CHANGE, change);
-
-
-                    // WARNING! Don't request historical data for a stock that doesn't exist!
-                    // The request will hang forever X_x
-                    try {
-                        List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
-                        StringBuilder historyBuilder = new StringBuilder();
-
-                        for (HistoricalQuote it : history) {
-                            historyBuilder.append(it.getDate().getTimeInMillis());
-                            historyBuilder.append(", ");
-                            historyBuilder.append(it.getClose());
-                            historyBuilder.append("\n");
-                            quoteCV.put(Contract.Quote.COLUMN_HISTORY, historyBuilder.toString());
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Log.e(TAG, "History data is not found");
-                    }
                     quoteCVs.add(quoteCV);
                 }
                 else {

@@ -208,7 +208,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onLoadFinished(Loader<List<HistoricalQuote>> loader, List<HistoricalQuote> data) {
 
-        if(data!=null) {
+        if (data != null && data.size() != 0) {
             showDataView();
             List<Entry> Enteries = new ArrayList<>();
             ArrayList<String> DateInMilis = new ArrayList<>();
