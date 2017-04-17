@@ -1,5 +1,6 @@
 package com.udacity.stockhawk.ui;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -243,6 +244,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     message = R.string.error_no_stock;
             }
             error.setText(message);
+            error.setContentDescription(error.getText());
             error.setVisibility(View.VISIBLE);
         } else {
             error.setVisibility(View.GONE);

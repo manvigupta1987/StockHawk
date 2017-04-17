@@ -7,7 +7,7 @@
     <string name="no_history_data">لا توجد بيانات التاريخ المتاحة للسهم %s</string>
 
     <string name="dialog_title">إضافة سهم</string>
-    <string name="dialog_hint">الرمز (مثل غوغ)</string>
+    <string name="dialog_hint">أدخل الرمز من الألف إلى الياء (على سبيل المثال، غوغ)</string>
     <string name="dialog_cancel">إلغاء</string>
     <string name="dialog_add">إضافة</string>
 
@@ -20,4 +20,5 @@
 
     <string name="stock_not_added">لا يتم إضافة النسبة المئوية٪ s لعدم وجود بيانات صالحة</string>
     <string name="title_widget_detail">تفاصيل المخزون</string>
+    <string name="add_stock">إضافة سهم لمعرفة السعر</string>
 </resources>

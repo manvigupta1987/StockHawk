@@ -20,7 +20,7 @@
     <string name="action_change_units">@string/pref_display_mode_key</string>
 
     <string name="dialog_title">Add Stock</string>
-    <string name="dialog_hint">Symbol (e.g. GOOG)</string>
+    <string name="dialog_hint">Enter Symbol from A to Z(e.g. GOOG)</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_add">Add</string>
 
@@ -48,4 +48,6 @@
     <string name="a11y_stock_price">Price: <xliff:g id="stock_price">%1$s</xliff:g></string>
     <string name="a11y_Stock_ABS_Price_Change">Absolute Price Change: <xliff:g id="change">%1$s</xliff:g></string>
     <string name="a11y_Stock_per_Price_Change">Price Change in Percentage: <xliff:g id="change">%1$s</xliff:g></string>
+
+    <string name="add_stock">Add a stock to see the price</string>
 </resources>

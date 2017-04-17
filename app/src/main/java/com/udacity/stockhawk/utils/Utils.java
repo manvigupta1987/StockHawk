@@ -18,7 +18,7 @@ import java.lang.annotation.RetentionPolicy;
  * Created by manvi on 11/4/17.
  */
 
-public class Utils {
+public final class Utils {
     @Retention(RetentionPolicy.SOURCE)
     @IntDef( {STOCK_STATUS_OK, STOCK_STATUS_SERVER_DOWN, STOCK_STATUS_NO_NETWORK,STOCK_STATUS_UNKNOWN})
 
