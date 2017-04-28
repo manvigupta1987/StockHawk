@@ -42,8 +42,6 @@ public class DetailWidgetProvider extends AppWidgetProvider {
             }
 
             Intent clickIntentTemplate = new Intent(context, DetailActivity.class);
-//            PendingIntent clickPendingIntent = PendingIntent.getBroadcast(context,0,
-//                                            clickIntentTemplate,PendingIntent.FLAG_UPDATE_CURRENT);
             PendingIntent clickPendingIntent = TaskStackBuilder.create(context)
                                                 .addNextIntentWithParentStack(clickIntentTemplate)
                                                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
