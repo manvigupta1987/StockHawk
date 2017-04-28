@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/manvi/.gradle/caches/modules-2/files-2.1/com.yahoofinance-api/YahooFinanceAPI/3.6.1/830e82ec44c0e51c08142d408ad74e489219478b/YahooFinanceAPI-3.6.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="830e82ec44c0e51c08142d408ad74e489219478b">
+        <dex dex="/home/manvi/gitRepos/StockHawk/app/build/intermediates/transforms/dex/debug/folders/1000/10/YahooFinanceAPI-3.6.1_78d93e93d95d193c9051a72b8c641d43dc4dfad4/classes.dex" />
+    </item>
+
+</items>

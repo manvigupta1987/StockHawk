@@ -1,6 +1,8 @@
 package com.udacity.stockhawk.ui;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -91,9 +93,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onClick(String symbol) {
         Timber.d("Symbol clicked: %s", symbol);
+        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(Constants.STOCK_NAME, symbol);
-        startActivity(intent);
+        startActivity(intent,bundle);
     }
 
     @Override
