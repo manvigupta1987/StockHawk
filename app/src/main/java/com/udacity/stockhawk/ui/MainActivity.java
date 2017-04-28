@@ -93,10 +93,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onClick(String symbol) {
         Timber.d("Symbol clicked: %s", symbol);
-        Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(Constants.STOCK_NAME, symbol);
-        startActivity(intent,bundle);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+            Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
+            startActivity(intent, bundle);
+        }
+        else {
+            startActivity(intent);
+        }
     }
 
     @Override
